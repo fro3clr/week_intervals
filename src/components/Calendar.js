@@ -6,7 +6,13 @@ class Calendar extends Component {
     return (
       <div>
         {Object.keys(this.props.schedule).map((day, i) => (
-          <DayRow day={day} schedule={this.props.schedule[day]} reserveTime={this.props.reserveTime} key={i} />
+          <DayRow
+            day={day}
+            schedule={this.props.schedule[day]}
+            reserveTime={this.props.reserveTime}
+            clearReservation={this.props.clearReservation}
+            key={i}
+          />
         ))}
       </div>
     );

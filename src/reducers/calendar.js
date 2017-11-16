@@ -1,5 +1,10 @@
 import { fromJS } from "immutable";
-import { REQUEST_INFO, RECEIVE_INFO, RESERVE_TIME } from "../actions/calendar";
+import {
+  REQUEST_INFO,
+  RECEIVE_INFO,
+  RESERVE_TIME,
+  CLEAR_RESERVATION
+} from "../actions/calendar";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -25,11 +30,26 @@ const reducer = (state, action) => {
         }
         return fromJS(value);
       });
-
+``
       let finalMap = newMap.toJS();
       finalMap.push(additionalList);
 
       return state.setIn(["schedule", "list", time.day], fromJS(finalMap));
+
+    case CLEAR_RESERVATION:
+      if (typeof action.day === "undefined") {
+        let currentState = state.getIn(["schedule", "list"]);
+        let currentStateObj = currentState.toJS();
+
+        Object.keys(currentStateObj).forEach(key => {
+          currentStateObj[key] = [];
+        });
+
+        return state.setIn(["schedule", "list"], fromJS(currentStateObj));
+      }
+
+      return state.setIn(["schedule", "list", action.day], fromJS([]));
+
     default:
       return state;
   }

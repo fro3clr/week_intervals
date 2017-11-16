@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import Calendar from "./components/Calendar";
-import { fetchInfo, reserveTime } from "./actions/calendar";
+import { fetchInfo, reserveTime, clearReservation } from "./actions/calendar";
 
 class App extends Component {
   componentWillMount() {
@@ -13,15 +13,23 @@ class App extends Component {
     return info && info.get("list") ? info.toJS().list : [];
   }
 
+  handleClearClick = (clearReservation) => event => {
+    event.preventDefault();
+    clearReservation();
+  }
+
   render() {
     return (
       <div>
         <h2>Set schedule</h2>
-        <Calendar schedule={this.getSchedule(this.props.schedule)}
-                  reserveTime={this.props.reserveTime} />
-        <button>Clear</button>
+        <Calendar
+          schedule={this.getSchedule(this.props.schedule)}
+          reserveTime={this.props.reserveTime}
+          clearReservation={this.props.clearReservation}
+        />
+        <button handleClearClick={this.handleClick(this.props.clearReservation)}>Clear</button>
         <button>Save changes</button>
-      </div>
+      </div>``
     );
   }
 }
@@ -33,8 +41,11 @@ const mapDispatchToProps = dispatch => {
     fetchInfo: () => {
       dispatch(fetchInfo());
     },
-    reserveTime: (time) => {
+    reserveTime: time => {
       dispatch(reserveTime(time));
+    },
+    clearReservation: day => {
+      dispatch(clearReservation(day));
     }
   };
 };
