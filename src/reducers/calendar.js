@@ -3,7 +3,7 @@ import {
   REQUEST_INFO,
   RECEIVE_INFO,
   RESERVE_TIME,
-  CLEAR_RESERVATION
+  CLEAR_OR_FILL_RESERVATION
 } from "../actions/calendar";
 
 const calendar = (state, action) => {
@@ -36,7 +36,7 @@ const calendar = (state, action) => {
 
       return state.setIn(["schedule", "list", time.day], fromJS(finalMap));
 
-    case CLEAR_RESERVATION:
+    case CLEAR_OR_FILL_RESERVATION:
       if (typeof action.day === "undefined") {
         let currentState = state.getIn(["schedule", "list"]);
         let currentStateObj = currentState.toJS();
@@ -48,7 +48,15 @@ const calendar = (state, action) => {
         return state.setIn(["schedule", "list"], fromJS(currentStateObj));
       }
 
-      return state.setIn(["schedule", "list", action.day], fromJS([]));
+      let currentState = state.getIn(["schedule", "list", action.day]).toJS();
+      if (Object.keys(currentState).length !== 0) {
+        return state.setIn(["schedule", "list", action.day], fromJS([]));
+      } else {
+        return state.setIn(
+          ["schedule", "list", action.day],
+          fromJS([{ bt: 0, et: 1439 }])
+        );
+      }
 
     default:
       return state;

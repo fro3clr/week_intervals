@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import HourCell from "./HourCell";
 
 class DayRow extends Component {
-  handleClick = (day, clearReservation) => event => {
+  handleClick = (day, clearOrFillReservation) => event => {
     event.preventDefault();
-    clearReservation(day);
+    clearOrFillReservation(day);
   };
   render() {
-    const { day, schedule, reserveTime, clearReservation } = this.props;
+    const { day, schedule, reserveTime, clearOrFillReservation } = this.props;
     return (
       <div>
         <div className="dayRow">
@@ -16,7 +16,7 @@ class DayRow extends Component {
           </div>
           <div
             className="rowCell allday"
-            onClick={this.handleClick(day, clearReservation)}
+            onClick={this.handleClick(day, clearOrFillReservation)}
           />
           {[...Array(24)].map((x, i) => (
             <HourCell

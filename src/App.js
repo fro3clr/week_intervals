@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import Calendar from "./components/Calendar";
-import { fetchInfo, reserveTime, clearReservation } from "./actions/calendar";
+import { fetchInfo, reserveTime, clearOrFillReservation } from "./actions/calendar";
 import { saveToStorage, importFromStorage } from "./actions/storage";
 
 class App extends Component {
@@ -15,9 +15,9 @@ class App extends Component {
     return info && info.get("list") ? info.toJS().list : [];
   }
 
-  handleClearClick = clearReservation => event => {
+  handleClearClick = clearOrFillReservation => event => {
     event.preventDefault();
-    clearReservation();
+    clearOrFillReservation();
   };
 
   handleSaveClick = saveToStorage => event => {
@@ -32,9 +32,9 @@ class App extends Component {
         <Calendar
           schedule={this.getSchedule(this.props.schedule)}
           reserveTime={this.props.reserveTime}
-          clearReservation={this.props.clearReservation}
+          clearOrFillReservation={this.props.clearOrFillReservation}
         />
-        <button onClick={this.handleClearClick(this.props.clearReservation)}>
+        <button onClick={this.handleClearClick(this.props.clearOrFillReservation)}>
           Clear
         </button>
         <button onClick={this.handleSaveClick(this.props.saveToStorage)}>
@@ -55,8 +55,8 @@ const mapDispatchToProps = dispatch => {
     reserveTime: time => {
       dispatch(reserveTime(time));
     },
-    clearReservation: day => {
-      dispatch(clearReservation(day));
+    clearOrFillReservation: day => {
+      dispatch(clearOrFillReservation(day));
     },
     saveToStorage: () => {
       dispatch(saveToStorage());

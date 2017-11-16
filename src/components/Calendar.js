@@ -10,7 +10,7 @@ class Calendar extends Component {
             day={day}
             schedule={this.props.schedule[day]}
             reserveTime={this.props.reserveTime}
-            clearReservation={this.props.clearReservation}
+            clearOrFillReservation={this.props.clearOrFillReservation}
             key={i}
           />
         ))}

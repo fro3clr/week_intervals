@@ -3,7 +3,7 @@ import info from "../info/schedule";
 export const REQUEST_INFO = "REQUEST_INFO";
 export const RECEIVE_INFO = "RECEIVE_INFO";
 export const RESERVE_TIME = "RESERVE_TIME";
-export const CLEAR_RESERVATION = "CLEAR_RESERVATION";
+export const CLEAR_OR_FILL_RESERVATION = "CLEAR_OR_FILL_RESERVATION";
 
 export const requestInfo = () => ({
   type: REQUEST_INFO
@@ -19,8 +19,8 @@ export const reserveTime = time => ({
   time
 });
 
-export const clearReservation = day => ({
-  type: CLEAR_RESERVATION,
+export const clearOrFillReservation = day => ({
+  type: CLEAR_OR_FILL_RESERVATION,
   day
 });
 
