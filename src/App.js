@@ -13,10 +13,10 @@ class App extends Component {
     return info && info.get("list") ? info.toJS().list : [];
   }
 
-  handleClearClick = (clearReservation) => event => {
+  handleClearClick = clearReservation => event => {
     event.preventDefault();
     clearReservation();
-  }
+  };
 
   render() {
     return (
@@ -27,9 +27,13 @@ class App extends Component {
           reserveTime={this.props.reserveTime}
           clearReservation={this.props.clearReservation}
         />
-        <button handleClearClick={this.handleClick(this.props.clearReservation)}>Clear</button>
+        <button
+          onClick={this.handleClearClick(this.props.clearReservation)}
+        >
+          Clear
+        </button>
         <button>Save changes</button>
-      </div>``
+      </div>
     );
   }
 }
