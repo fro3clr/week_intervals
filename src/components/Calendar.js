@@ -1,25 +1,12 @@
 import React, { Component } from "react";
+import DayRow from "./DayRow";
 
 class Calendar extends Component {
   render() {
     return (
       <div>
-        {Object.keys(this.props.schedule).map((x, i) => (
-          <div className="dayRow">
-            <div className="rowCell">
-              <h3>{x}</h3>
-            </div>
-            <div className="rowCell">+</div>
-            {[...Array(24)].map((x, i) => (
-              <div
-                className="rowCell hour"
-                data-start={i * 60}
-                data-end={i * 60 + 59}
-              >
-                {" "}
-              </div>
-            ))}
-          </div>
+        {Object.keys(this.props.schedule).map((day, i) => (
+          <DayRow day={day} schedule={this.props.schedule[day]} reserveTime={this.props.reserveTime} key={i} />
         ))}
       </div>
     );

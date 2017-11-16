@@ -11,6 +11,7 @@
   list-style: none;
   border: solid 1px white;
   text-align: center;
+  user-select: none;
 }
 
 .rowCell {
@@ -21,4 +22,8 @@
 .hour {
   width: 3.33%;
   border-color: #000;
+}
+
+.hour.taken {
+  background-color: #5e5e5e
 }

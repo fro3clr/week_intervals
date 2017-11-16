@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import Calendar from "./components/Calendar";
-import { fetchInfo } from "./actions/calendar";
+import { fetchInfo, reserveTime } from "./actions/calendar";
 
 class App extends Component {
   componentWillMount() {
@@ -17,7 +17,10 @@ class App extends Component {
     return (
       <div>
         <h2>Set schedule</h2>
-        <Calendar schedule={this.getSchedule(this.props.schedule)} />
+        <Calendar schedule={this.getSchedule(this.props.schedule)}
+                  reserveTime={this.props.reserveTime} />
+        <button>Clear</button>
+        <button>Save changes</button>
       </div>
     );
   }
@@ -29,6 +32,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchInfo: () => {
       dispatch(fetchInfo());
+    },
+    reserveTime: (time) => {
+      dispatch(reserveTime(time));
     }
   };
 };
