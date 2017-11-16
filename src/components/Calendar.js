@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import DayRow from "./DayRow";
+import Header from "./Header";
 
 class Calendar extends Component {
   render() {
     return (
       <div>
+        <Header />
         {Object.keys(this.props.schedule).map((day, i) => (
           <DayRow
             day={day}

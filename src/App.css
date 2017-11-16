@@ -26,11 +26,22 @@ h2 {
 }
 
 .rowCell.day.filled {
-  background-color: #dbdbdb;  
+  background-color: #dbdbdb;
 }
 
 .rowCell.allday {
   background-color: #949494;
+}
+
+.rowCell.time {
+  border: 0;
+  border-left: solid 1px #dfdfe1;
+  text-align: left;
+  padding-bottom: 2rem;
+}
+
+.dayRow.header .rowCell:not(.time) {
+  border: 0;
 }
 
 .hour {
