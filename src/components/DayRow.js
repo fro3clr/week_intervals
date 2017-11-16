@@ -11,11 +11,11 @@ class DayRow extends Component {
     return (
       <div>
         <div className="dayRow">
-          <div className="rowCell">
+          <div className="rowCell day">
             <h3>{day}</h3>
           </div>
           <div
-            className="rowCell"
+            className="rowCell allday"
             onClick={this.handleClick(day, clearReservation)}
           />
           {[...Array(24)].map((x, i) => (

@@ -1,3 +1,9 @@
+h2 {
+  color: #8f8f91;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
 .dayRow {
   display: flex;
   flex-wrap: wrap;
@@ -6,24 +12,38 @@
 .rowCell {
   box-sizing: border-box;
   flex-grow: 1;
-  width: 100%;
+  width: 10%;
   overflow: hidden;
   list-style: none;
-  border: solid 1px white;
+  border: solid 0.5px #dfdfe1;
   text-align: center;
   user-select: none;
+  color: #c0c0c2;
 }
 
-.rowCell {
-  width: 10%;
-  border-color: #000;
+.rowCell.day {
+  text-transform: uppercase;
+}
+
+.rowCell.allday {
+  background-color: #949494;
 }
 
 .hour {
   width: 3.33%;
-  border-color: #000;
 }
 
 .hour.taken {
-  background-color: #5e5e5e
+  background-color: #dbdbdb;
+}
+
+button {
+  background-color: #949494;
+  color: #fff;
+  border: 0;
+  float: right;
+  border-radius: 6px;
+  padding: 0.5rem 2rem;
+  margin: 3rem 0 0 1rem;
+  box-shadow: 0 2px 0 #535353;
 }
