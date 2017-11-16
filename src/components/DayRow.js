@@ -11,7 +11,7 @@ class DayRow extends Component {
     return (
       <div>
         <div className="dayRow">
-          <div className="rowCell day">
+          <div className={"rowCell day " + (schedule.length > 0 ? "filled" : "")}>
             <h3>{day}</h3>
           </div>
           <div

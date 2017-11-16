@@ -31,6 +31,10 @@ const calendar = (state, action) => {
         return fromJS(value);
       });
 
+      if (newMap.size === 0) {
+        additionalList = { bt: time.start, et: time.end };
+      }
+
       let finalMap = newMap.toJS();
       finalMap.push(additionalList);
 

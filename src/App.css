@@ -25,6 +25,10 @@ h2 {
   text-transform: uppercase;
 }
 
+.rowCell.day.filled {
+  background-color: #dbdbdb;  
+}
+
 .rowCell.allday {
   background-color: #949494;
 }
