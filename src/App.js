@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import "./App.css";
 import Calendar from "./components/Calendar";
 import { fetchInfo, reserveTime, clearReservation } from "./actions/calendar";
+import { saveToStorage, importFromStorage } from "./actions/storage";
 
 class App extends Component {
   componentWillMount() {
     this.props.fetchInfo();
+    this.props.importFromStorage();
   }
 
   getSchedule(info) {
@@ -18,6 +20,11 @@ class App extends Component {
     clearReservation();
   };
 
+  handleSaveClick = saveToStorage => event => {
+    event.preventDefault();
+    saveToStorage();
+  };
+
   render() {
     return (
       <div>
@@ -27,12 +34,12 @@ class App extends Component {
           reserveTime={this.props.reserveTime}
           clearReservation={this.props.clearReservation}
         />
-        <button
-          onClick={this.handleClearClick(this.props.clearReservation)}
-        >
+        <button onClick={this.handleClearClick(this.props.clearReservation)}>
           Clear
         </button>
-        <button>Save changes</button>
+        <button onClick={this.handleSaveClick(this.props.saveToStorage)}>
+          Save changes
+        </button>
       </div>
     );
   }
@@ -50,6 +57,12 @@ const mapDispatchToProps = dispatch => {
     },
     clearReservation: day => {
       dispatch(clearReservation(day));
+    },
+    saveToStorage: () => {
+      dispatch(saveToStorage());
+    },
+    importFromStorage: () => {
+      dispatch(importFromStorage());
     }
   };
 };

@@ -6,7 +6,7 @@ import {
   CLEAR_RESERVATION
 } from "../actions/calendar";
 
-const reducer = (state, action) => {
+const calendar = (state, action) => {
   switch (action.type) {
     case REQUEST_INFO:
       return state.set("schedule", fromJS({ isFetching: true, list: {} }));
@@ -55,4 +55,4 @@ const reducer = (state, action) => {
   }
 };
 
-export default reducer;
+export default calendar;
