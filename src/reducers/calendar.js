@@ -30,7 +30,7 @@ const reducer = (state, action) => {
         }
         return fromJS(value);
       });
-``
+
       let finalMap = newMap.toJS();
       finalMap.push(additionalList);
 
