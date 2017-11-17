@@ -11,8 +11,7 @@ class DayRow extends Component {
     schedule.length === 1 && schedule[0].bt === 0 && schedule[0].et === 1439;
 
   render() {
-    const { day, schedule, reserveTime, clearOrFillReservation } = this.props;
-    console.log(schedule.length);
+    const { day, schedule, reserveTime, clearOrFillReservation, setFreeTime } = this.props;
     return (
       <div>
         <div className="dayRow">
@@ -33,6 +32,7 @@ class DayRow extends Component {
               i={i}
               schedule={schedule}
               reserveTime={reserveTime}
+              setFreeTime={setFreeTime}
               day={day}
               key={i}
             />

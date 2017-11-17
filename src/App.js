@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import Calendar from "./components/Calendar";
-import { fetchInfo, reserveTime, clearOrFillReservation } from "./actions/calendar";
+import { fetchInfo, reserveTime, clearOrFillReservation, setFreeTime } from "./actions/calendar";
 import { saveToStorage, importFromStorage } from "./actions/storage";
 
 class App extends Component {
@@ -33,6 +33,7 @@ class App extends Component {
           schedule={this.getSchedule(this.props.schedule)}
           reserveTime={this.props.reserveTime}
           clearOrFillReservation={this.props.clearOrFillReservation}
+          setFreeTime={this.props.setFreeTime}
         />
         <button onClick={this.handleClearClick(this.props.clearOrFillReservation)}>
           Clear
@@ -54,6 +55,9 @@ const mapDispatchToProps = dispatch => {
     },
     reserveTime: time => {
       dispatch(reserveTime(time));
+    },
+    setFreeTime: time => {
+      dispatch(setFreeTime(time));
     },
     clearOrFillReservation: day => {
       dispatch(clearOrFillReservation(day));

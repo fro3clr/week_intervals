@@ -4,6 +4,7 @@ export const REQUEST_INFO = "REQUEST_INFO";
 export const RECEIVE_INFO = "RECEIVE_INFO";
 export const RESERVE_TIME = "RESERVE_TIME";
 export const CLEAR_OR_FILL_RESERVATION = "CLEAR_OR_FILL_RESERVATION";
+export const SET_FREE_TIME = "SET_FREE_TIME";
 
 export const requestInfo = () => ({
   type: REQUEST_INFO
@@ -16,6 +17,11 @@ export const receiveInfo = posts => ({
 
 export const reserveTime = time => ({
   type: RESERVE_TIME,
+  time
+});
+
+export const setFreeTime = time => ({
+  type: SET_FREE_TIME,
   time
 });
 

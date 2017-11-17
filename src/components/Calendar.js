@@ -13,6 +13,7 @@ class Calendar extends Component {
             schedule={this.props.schedule[day]}
             reserveTime={this.props.reserveTime}
             clearOrFillReservation={this.props.clearOrFillReservation}
+            setFreeTime={this.props.setFreeTime}
             key={i}
           />
         ))}
