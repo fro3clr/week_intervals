@@ -9,6 +9,7 @@ h2 {
   flex-wrap: wrap;
   padding: 0;
 }
+
 .rowCell {
   box-sizing: border-box;
   flex-grow: 1;
@@ -31,6 +32,20 @@ h2 {
 
 .rowCell.allday {
   background-color: #949494;
+  position: relative;
+}
+
+.rowCell.allday.fullfilled::before {
+  content: "✓";
+  font-size: 3rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  border: 0;
+  padding: 0 0.5rem;
+  background-color: #bfbfbf;
+  border-radius: 100%;
 }
 
 .rowCell.time {

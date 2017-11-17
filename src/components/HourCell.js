@@ -4,13 +4,23 @@ class HourCell extends Component {
   isDayTaken = (schedule, start, end) =>
     schedule.some(i => start >= i.bt && end <= i.et);
 
-  handleDayClick = (day, start, end, reserveTime) => event => {
+  handleDayClick = (schedule, day, start, end, reserveTime) => event => {
     event.preventDefault();
+
+    if (this.isDayTaken(schedule, start, end)) {
+      return;
+    }
+
     reserveTime({ day, start, end });
   };
 
-  handleDayMouseOver = (day, start, end, reserveTime) => event => {
+  handleDayMouseOver = (schedule, day, start, end, reserveTime) => event => {
     event.preventDefault();
+
+    if (this.isDayTaken(schedule, start, end)) {
+      return;
+    }
+
     if (event.buttons === 1) {
       reserveTime({ day, start, end });
     }
@@ -25,8 +35,14 @@ class HourCell extends Component {
           "rowCell hour " +
           (this.isDayTaken(schedule, start, end) ? "taken" : "")
         }
-        onClick={this.handleDayClick(day, start, end, reserveTime)}
-        onMouseOver={this.handleDayMouseOver(day, start, end, reserveTime)}
+        onClick={this.handleDayClick(schedule, day, start, end, reserveTime)}
+        onMouseOver={this.handleDayMouseOver(
+          schedule,
+          day,
+          start,
+          end,
+          reserveTime
+        )}
       >
         {" "}
       </div>
