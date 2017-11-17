@@ -5,7 +5,7 @@ import {
   RESERVE_TIME,
   CLEAR_OR_FILL_RESERVATION
 } from "../actions/calendar";
-ё
+
 const calendar = (state, action) => {
   switch (action.type) {
     case REQUEST_INFO:
@@ -24,20 +24,14 @@ const calendar = (state, action) => {
       let rightMark = newInt.find(o => o.bt === time.end + 1);
 
       if (typeof leftMark !== "undefined" && typeof rightMark !== "undefined") {
-        newInt = newInt.filter(function(obj) {
-          return obj.et !== time.start - 1 || obj.bt !== time.end + 1;
-        });
-
+        newInt = newInt.filter(obj => obj.et !== time.start - 1);
+        newInt = newInt.filter(obj => obj.bt !== time.end + 1);
         newInt.push({ bt: leftMark.bt, et: rightMark.et });
       } else if (typeof leftMark !== "undefined") {
-        newInt = newInt.filter(function(obj) {
-          return obj.et !== time.start - 1;
-        });
+        newInt = newInt.filter(obj => obj.et !== time.start - 1);
         newInt.push({ bt: leftMark.bt, et: time.end });
       } else if (typeof rightMark !== "undefined") {
-        newInt = newInt.filter(function(obj) {
-          return obj.bt !== time.end + 1;
-        });
+        newInt = newInt.filter(obj => obj.bt !== time.end + 1);
         newInt.push({ bt: time.start, et: rightMark.et });
       } else {
         newInt.push({ bt: time.start, et: time.end });
