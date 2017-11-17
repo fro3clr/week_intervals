@@ -7,4 +7,4 @@
 - Build the app+css: `npm run build`
 - Go to `localhost:3000`
 
-- [Proj on Gh-pages](https://fro3clr.github.io/week_intervals)
+- [Proj on Gh-pages](https://fro3clr.github.io/week_intervals/)
